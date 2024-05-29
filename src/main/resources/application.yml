@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: pethub
+  mvc:
+    view:
+      suffix: .html
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://3.36.207.45:3306/pethub?serverTimezone=UTC&characterEncoding=utf8
+    username: root
+    password: 12345678
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
