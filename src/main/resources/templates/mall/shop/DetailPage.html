@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상세 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #007bff;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #007bff;
+            margin-bottom: 20px;
+        }
+        .product-info {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .product-info div {
+            margin-bottom: 10px;
+        }
+        .product-info strong {
+            display: inline-block;
+            width: 100px;
+        }
+        #quantity {
+            width: 50px;
+            text-align: center;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 14px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>상세페이지</h1>
+<hr>
+
+
+<div th:each="product : ${product}">
+    <h2>Product Information</h2>
+    <div>
+        <strong>ID:</strong> <span th:text="${product.id}"></span>
+    </div>
+    <div>
+        <strong>상품명:</strong> <span th:text="${product.name}"></span>
+    </div>
+    <div>
+        <strong>가격:</strong> <span th:text="${product.price}"></span>
+    </div>
+    <div>
+        주문수량 : <input id="quantity" name="quantity" type="text" value="1">
+        <span>
+                <button type="button"
+                        onclick="document.getElementById('quantity').value++;">+</button>
+                <button type="button"
+                        onclick="if(document.getElementById('quantity').value>1) document.getElementById('quantity').value--;">-</button>
+            </span>
+    </div>
+
+    <div>
+        <form th:action="@{'/pay/detailPage/' + ${product.id}}" method="POST">
+            <input type="hidden" name="productId" th:value="${product.id}" />
+            <input type="hidden" id="formQuantity" name="quantity" th:value="${1}" />
+            <button type="submit">구매</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // 폼 제출 전에 숨겨진 입력 필드의 값을 업데이트합니다
+    document.querySelector('form').addEventListener('submit', function() {
+        var quantity = document.getElementById('quantity').value;
+        document.getElementById('formQuantity').value = quantity;
+    });
+
+
+
+</script>
+
+</body>
+</html>
