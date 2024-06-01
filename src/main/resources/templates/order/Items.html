@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .relative:hover .absolute {
+            display: block;
+        }
+
+        .absolute {
+            display: none;
+            z-index: 10;
+        }
+
+        .absolute a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #4a5568;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .absolute a:hover {
+            background-color: #edf2f7;
+            color: #2d3748;
+        }
+
+        .space-x-2 > * + * {
+            margin-left: 3rem; /* 카테고리 간의 간격을 조정합니다 */
+        }
+
+        .relative button {
+            padding: 1.5rem 3rem; /* 각 카테고리 버튼의 크기를 조정합니다 */
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<div th:replace="~{order/shopHeader :: search}"></div>
+<div th:replace="~{order/shopHeader :: category}"></div>
+<main class="mx-auto max-w-[1600px] w-full">
+    <div th:each="product : ${product}">
+        <div class="grid grid-cols-3 gap-4 p-4 max-w-[1600px] mx-auto">
+            <div class="rounded-lg border shadow-sm col-span-2 bg-orange-600 text-white" data-v0-t="card">
+                <div class="flex flex-col space-y-1.5 p-6">
+                    <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">K9 Natural
+                        Food</h3>
+                    <p class="text-sm text-muted-foreground">No grains, No GMO, No additives</p>
+                </div>
+                <div class="p-6">
+                    <img src="/placeholder.svg" alt="Promotional content" class="aspect-[2/1]" width="400"
+                         height="200"/>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-[2/1]" width="200" height="100"/>
+                        <div class="mt-2 text-center">
+                            <p class="text-sm">Natural Cat Litter</p>
+                            <p class="text-orange-600">20% discount</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-[2/1]" width="200" height="100"/>
+                        <div class="mt-2 text-center">
+                            <p class="text-sm">Cat Scratcher Bed</p>
+                            <p class="text-gray-600">Comfortable &amp; Durable</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-5 gap-4 p-4 max-w-[1600px] mx-auto"></div>
+        <div class="p-4 max-w-[1600px] mx-auto">
+            <h2 class="text-xl font-bold text-orange-600 mb-4">당신을 위한 추천상품</h2>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-square" width="100" height="100"/>
+                        <div class="mt-4 text-center">
+
+                            <p class="text-sm">
+                                <a th:href="@{/order/DetailPage/{productId}(productId=${product.id})}">이거 테스트용 Name</a>
+                            </p>
+
+
+
+                            <p class="text-gray-600">Product Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-square" width="100" height="100"/>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm">Product Name</p>
+                            <p class="text-gray-600">Product Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-square" width="100" height="100"/>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm">Product Name</p>
+                            <p class="text-gray-600">Product Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-square" width="100" height="100"/>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm">Product Name</p>
+                            <p class="text-gray-600">Product Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-square" width="100" height="100"/>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm">Product Name</p>
+                            <p class="text-gray-600">Product Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-square" width="100" height="100"/>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm">Product Name</p>
+                            <p class="text-gray-600">Product Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-square" width="100" height="100"/>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm">Product Name</p>
+                            <p class="text-gray-600">Product Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-lg border text-card-foreground shadow-sm bg-white" data-v0-t="card">
+                    <div class="p-6">
+                        <img src="/placeholder.svg" alt="Product" class="aspect-square" width="100" height="100"/>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm">Product Name</p>
+                            <p class="text-gray-600">Product Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<div th:replace="~{footer :: footer}"></div>
+</body>
+</html>

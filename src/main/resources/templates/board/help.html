@@ -1,10 +1,382 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
+<div class="min-h-screen flex flex-col bg-orange-50">
+    <div th:replace="~{header :: header}"></div>
+    <main class="flex-1">
+        <section class="py-16">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="max-w-3xl mx-auto">
+                    <h1 class="text-4xl font-bold mb-4">고객지원</h1>
+                    <p class="text-gray-600 mb-8">
+                        고객지원에 어려움을 겪고 계신가요? 저희는 고객님의 문제를 신속하게 해결해드리기 위해 최선을 다하고 있습니다. 우선, 자주 묻는 질문(FAQ) 섹션을 확인해 주세요. 여기에는 많은 고객님들이 자주 겪는 문제와 그 해결 방법이 정리되어 있습니다.<Br><Br>
+                        만약 FAQ 섹션에서 원하시는 정보를 찾지 못하셨다면, 저희에게 직접 문의를 남겨 주세요. 새 문의를 남기시면, 저희 고객지원 팀이 신속하게 확인하고 최대한 빠르게 답변을 드릴 것입니다.
+                    </p>
+                    <div class="mb-12">
+                        <h2 class="text-2xl font-bold mb-4">자주 묻는 질문 (FAQ)</h2>
+                        <div class="grid gap-4">
+                            <div data-orientation="vertical">
+                                <div data-state="closed" data-orientation="vertical" class="border-b">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button
+                                                type="button"
+                                                aria-controls="radix-:r5:"
+                                                aria-expanded="false"
+                                                data-state="closed"
+                                                data-orientation="vertical"
+                                                id="radix-:r4:"
+                                                class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]>svg]:rotate-180"
+                                                data-radix-collection-item=""
+                                        >
+                                            반품은 어떻게 하나요?
+                                            <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200"
+                                            >
+                                                <path d="m6 9 6 6 6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </h3>
+                                    <div
+                                            data-state="closed"
+                                            id="radix-:r5:"
+                                            role="region"
+                                            aria-labelledby="radix-:r4:"
+                                            data-orientation="vertical"
+                                            class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                                            style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); --radix-collapsible-content-height: 148px; --radix-collapsible-content-width: 768px;"
+                                            hidden=""
+                                    ></div>
+                                </div>
+                                <div data-state="closed" data-orientation="vertical" class="border-b">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button
+                                                type="button"
+                                                aria-controls="radix-:r7:"
+                                                aria-expanded="false"
+                                                data-state="closed"
+                                                data-orientation="vertical"
+                                                id="radix-:r6:"
+                                                class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]>svg]:rotate-180"
+                                                data-radix-collection-item=""
+                                        >
+                                            주문 추적은 어떻게 하나요?
+                                            <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200"
+                                            >
+                                                <path d="m6 9 6 6 6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </h3>
+                                    <div
+                                            data-state="closed"
+                                            id="radix-:r7:"
+                                            role="region"
+                                            aria-labelledby="radix-:r6:"
+                                            data-orientation="vertical"
+                                            class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                                            style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); --radix-collapsible-content-height: 148px; --radix-collapsible-content-width: 768px;"
+                                            hidden=""
+                                    ></div>
+                                </div>
+                                <div data-state="closed" data-orientation="vertical" class="border-b">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button
+                                                type="button"
+                                                aria-controls="radix-:r5:"
+                                                aria-expanded="false"
+                                                data-state="closed"
+                                                data-orientation="vertical"
+                                                id="radix-:r4:"
+                                                class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]>svg]:rotate-180"
+                                                data-radix-collection-item=""
+                                        >
+                                            배송 기간은 얼마나 걸리나요?
+                                            <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200"
+                                            >
+                                                <path d="m6 9 6 6 6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </h3>
+                                    <div
+                                            data-state="closed"
+                                            id="radix-:r5:"
+                                            role="region"
+                                            aria-labelledby="radix-:r4:"
+                                            data-orientation="vertical"
+                                            class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                                            style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); --radix-collapsible-content-height: 148px; --radix-collapsible-content-width: 768px;"
+                                            hidden=""
+                                    ></div>
+                                </div>
+                                <div data-state="closed" data-orientation="vertical" class="border-b">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button
+                                                type="button"
+                                                aria-controls="radix-:r5:"
+                                                aria-expanded="false"
+                                                data-state="closed"
+                                                data-orientation="vertical"
+                                                id="radix-:r4:"
+                                                class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]>svg]:rotate-180"
+                                                data-radix-collection-item=""
+                                        >
+                                            배송비는 얼마인가요?
+                                            <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200"
+                                            >
+                                                <path d="m6 9 6 6 6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </h3>
+                                    <div
+                                            data-state="closed"
+                                            id="radix-:r5:"
+                                            role="region"
+                                            aria-labelledby="radix-:r4:"
+                                            data-orientation="vertical"
+                                            class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                                            style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); --radix-collapsible-content-height: 148px; --radix-collapsible-content-width: 768px;"
+                                            hidden=""
+                                    ></div>
+                                </div>
+                                <div data-state="closed" data-orientation="vertical" class="border-b">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button
+                                                type="button"
+                                                aria-controls="radix-:r5:"
+                                                aria-expanded="false"
+                                                data-state="closed"
+                                                data-orientation="vertical"
+                                                id="radix-:r4:"
+                                                class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]>svg]:rotate-180"
+                                                data-radix-collection-item=""
+                                        >
+                                            쿠폰이나 할인 코드 사용 방법은?
+                                            <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200"
+                                            >
+                                                <path d="m6 9 6 6 6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </h3>
+                                    <div
+                                            data-state="closed"
+                                            id="radix-:r5:"
+                                            role="region"
+                                            aria-labelledby="radix-:r4:"
+                                            data-orientation="vertical"
+                                            class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                                            style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); --radix-collapsible-content-height: 148px; --radix-collapsible-content-width: 768px;"
+                                            hidden=""
+                                    ></div>
+                                </div>
+                                <div data-state="closed" data-orientation="vertical" class="border-b">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button
+                                                type="button"
+                                                aria-controls="radix-:r5:"
+                                                aria-expanded="false"
+                                                data-state="closed"
+                                                data-orientation="vertical"
+                                                id="radix-:r4:"
+                                                class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]>svg]:rotate-180"
+                                                data-radix-collection-item=""
+                                        >
+                                            주문 변경 또는 취소는 어떻게 하나요?
+                                            <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200"
+                                            >
+                                                <path d="m6 9 6 6 6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </h3>
+                                    <div
+                                            data-state="closed"
+                                            id="radix-:r5:"
+                                            role="region"
+                                            aria-labelledby="radix-:r4:"
+                                            data-orientation="vertical"
+                                            class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                                            style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); --radix-collapsible-content-height: 148px; --radix-collapsible-content-width: 768px;"
+                                            hidden=""
+                                    ></div>
+                                </div>
+                                <div data-state="closed" data-orientation="vertical" class="border-b">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button
+                                                type="button"
+                                                aria-controls="radix-:r5:"
+                                                aria-expanded="false"
+                                                data-state="closed"
+                                                data-orientation="vertical"
+                                                id="radix-:r4:"
+                                                class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]>svg]:rotate-180"
+                                                data-radix-collection-item=""
+                                        >
+                                            회원 정보는 어떻게 수정하나요?
+                                            <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200"
+                                            >
+                                                <path d="m6 9 6 6 6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </h3>
+                                    <div
+                                            data-state="closed"
+                                            id="radix-:r5:"
+                                            role="region"
+                                            aria-labelledby="radix-:r4:"
+                                            data-orientation="vertical"
+                                            class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                                            style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); --radix-collapsible-content-height: 148px; --radix-collapsible-content-width: 768px;"
+                                            hidden=""
+                                    ></div>
+                                </div>
+                                <div data-state="closed" data-orientation="vertical" class="border-b">
+                                    <h3 data-orientation="vertical" data-state="closed" class="flex">
+                                        <button
+                                                type="button"
+                                                aria-controls="radix-:r5:"
+                                                aria-expanded="false"
+                                                data-state="closed"
+                                                data-orientation="vertical"
+                                                id="radix-:r4:"
+                                                class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&amp;[data-state=open]>svg]:rotate-180"
+                                                data-radix-collection-item=""
+                                        >
+                                            상품에 문제가 있으면 어떻게 하나요?
+                                            <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="lucide lucide-chevron-down h-4 w-4 shrink-0 transition-transform duration-200"
+                                            >
+                                                <path d="m6 9 6 6 6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </h3>
+                                    <div
+                                            data-state="closed"
+                                            id="radix-:r5:"
+                                            role="region"
+                                            aria-labelledby="radix-:r4:"
+                                            data-orientation="vertical"
+                                            class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                                            style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); --radix-collapsible-content-height: 148px; --radix-collapsible-content-width: 768px;"
+                                            hidden=""
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold mb-4">문의 남기기</h2>
+                        <p class="text-gray-600 mb-4">
+                            자주 묻는 질문에서 질문에 대한 답변을 찾을 수 없는 경우 아래에 문의사항을 남겨주시면 펫허브의
+                            지원팀에서 최대한 빨리 답변해 드리겠습니다.
+                        </p>
+                        <div class="grid gap-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="성함"
+                                />
+                                <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        placeholder="이메일"
+                                />
+                            </div>
+                            <textarea
+                                    class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    placeholder="남기실 말씀"
+                                    rows="4"
+                            ></textarea>
+                            <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-orange-600 text-white hover:bg-primary/90 h-10 px-4 py-2">
+                                문의 남기기
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div th:replace="~{footer :: footer}"></div>
+</div>
 </body>
 </html>

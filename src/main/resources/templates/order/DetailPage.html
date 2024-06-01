@@ -59,6 +59,7 @@
     </style>
 </head>
 <body>
+
 <h1>상세페이지</h1>
 <hr>
 
@@ -85,7 +86,7 @@
     </div>
 
     <div>
-        <form th:action="@{'/pay/detailPage/' + ${product.id}}" method="POST">
+        <form th:action="@{'/order/DetailPage/' + ${product.id}}" method="POST">
             <input type="hidden" name="productId" th:value="${product.id}" />
             <input type="hidden" id="formQuantity" name="quantity" th:value="${1}" />
             <button type="submit">구매</button>

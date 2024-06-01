@@ -2,11 +2,104 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
-    <a href="/mall/shop/items">상품목록</a>
-
+<div class="min-h-screen flex flex-col">
+    <div th:replace="~{header :: header}"></div>
+    <main class="flex-1">
+        <section class="bg-orange-50 py-16">
+            <div class="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">PetHub에 오신 것을 환영합니다!</h1>
+                    <p class="text-lg text-gray-600 mb-6">
+                        반려동물 애호가들의 활기찬 커뮤니티와 반려동물의 모든 필요를 충족하는 원스톱 쇼핑을 만나보세요.
+                    </p>
+                    <div class="flex gap-4">
+                        <a
+                                class="inline-flex items-center justify-center rounded-md bg-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+                                href="#"
+                        >
+                            커뮤니티
+                        </a>
+                        <a
+                                class="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-semibold text-orange-600 shadow-sm hover:bg-gray-50"
+                                href="#"
+                        >
+                            쇼핑몰
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <img
+                            src="/placeholder.svg"
+                            width="600"
+                            height="400"
+                            alt="Hero"
+                            class="rounded-lg shadow-lg"
+                            style="aspect-ratio: 600 / 400; object-fit: cover;"
+                    />
+                </div>
+            </div>
+        </section>
+        <section class="py-16">
+            <div class="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <img
+                            src="/placeholder.svg"
+                            width="600"
+                            height="400"
+                            alt="Community"
+                            class="rounded-lg shadow-lg"
+                            style="aspect-ratio: 600 / 400; object-fit: cover;"
+                    />
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">반려동물 애호가들과 소통할 수 있어요!</h2>
+                    <p class="text-gray-600 mb-6">
+                        반려동물 애호가들의 활발한 커뮤니티에 가입하여 이야기, 조언, 경험을 공유하세요. <Br>
+                        같은 생각을 가진 연결하고 서로에게서 배워보세요.
+                    </p>
+                    <a
+                            class="inline-flex items-center justify-center rounded-md bg-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+                            href="#"
+                    >
+                        커뮤니티 살펴보기
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="bg-orange-50 py-16">
+            <div class="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">지금 당장 필요한 제품들을 구매하세요!</h2>
+                    <p class="text-gray-600 mb-6">
+                        려동물을 위한 다양한 고품질 반려동물 용품, 장난감, 액세서리를 만나보세요.<Br>
+                        저희 웹사이트에서는 쇼핑몰도 제공하고 있습니다!
+                    </p>
+                    <a
+                            class="inline-flex items-center justify-center rounded-md bg-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+                            href="/order/Items"
+                    >
+                        쇼핑하기
+                    </a>
+                </div>
+                <div>
+                    <img
+                            src="/placeholder.svg"
+                            width="600"
+                            height="400"
+                            alt="Shop"
+                            class="rounded-lg shadow-lg"
+                            style="aspect-ratio: 600 / 400; object-fit: cover;"
+                    />
+                </div>
+            </div>
+        </section>
+    </main>
+    <div th:replace="~{footer :: footer}"></div>
+</div>
 </body>
 </html>

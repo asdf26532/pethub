@@ -1,10 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
+<div class="min-h-screen flex flex-col">
+    <div th:replace="~{header :: header}"></div>
+    <main class="flex-1 bg-orange-50">
+        <section class="py-16">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="max-w-2xl mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-center">당신의 계정을 생성하세요!</h1>
+                    <p class="text-gray-600 mb-6 text-center">
+                        반려동물 애호가들의 활기찬 커뮤니티에 가입하고 독점 혜택을 누려보세요. <br>
+                        가입하시면 반려동물에 대한 다양한 정보와 팁을 공유할 수 있으며, <br>
+                        다른 애호가들과 소통하며 경험을 나눌 수 있습니다. <br>
+                        또한, 회원 전용 이벤트와 할인 혜택을 통해 반려동물 용품을 더 저렴하게 구매할 수 있는 기회를 제공합니다. <br>
+                        지금 바로 가입하고, 사랑스러운 반려동물과 함께 더 행복한 일상을 만들어 보세요!
+                    </p>
+                    <br>
+                    <form class="grid gap-6">
+                        <div class="grid gap-2">
+                            <label
+                                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900"
+                                    for="username"
+                            >
+                                사용자 아이디
+                            </label>
+                            <input
+                                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="username"
+                                    placeholder="사용하실 아이디를 입력하세요."
+                                    required=""
+                                    type="text"
+                            />
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="grid gap-2">
+                                <label
+                                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900"
+                                        for="password"
+                                >
+                                    사용자 비밀번호
+                                </label>
+                                <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        id="password"
+                                        placeholder="사용하실 비밀번호를 입력하세요"
+                                        required=""
+                                        type="password"
+                                />
+                            </div>
+                            <div class="grid gap-2">
+                                <label
+                                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900"
+                                        for="passwordCheck"
+                                >
+                                    비밀번호 확인
+                                </label>
+                                <input
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        id="passwordCheck"
+                                        placeholder="비밀번호를 한번 더 입력하세요."
+                                        required=""
+                                        type="password"
+                                />
+                            </div>
+                        </div>
+                        <div class="grid gap-2">
+                            <label
+                                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900"
+                                    for="name"
+                            >
+                                이름
+                            </label>
+                            <input
+                                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="name"
+                                    placeholder="이름을 입력하세요."
+                                    required=""
+                                    type="text"
+                            />
+                        </div>
+                        <div class="grid gap-2">
+                            <label
+                                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900"
+                                    for="nick"
+                            >
+                                닉네임
+                            </label>
+                            <input
+                                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="nick"
+                                    placeholder="사용하실 닉네임을 입력하세요."
+                                    required=""
+                                    type="text"
+                            />
+                        </div>
+                        <div class="grid gap-2">
+                            <label
+                                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900"
+                                    for="email"
+                            >
+                                이메일
+                            </label>
+                            <input
+                                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="email"
+                                    placeholder="이메일을 입력하세요."
+                                    required=""
+                                    type="email"
+                            />
+                        </div>
+                        <div class="grid gap-2">
+                            <label
+                                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900"
+                                    for="address"
+                            >
+                                주소
+                            </label>
+                            <input
+                                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="address"
+                                    placeholder="주소를 입력하세요. 배송시 기본 배송주소로 쓰입니다."
+                                    required=""
+                                    type="text"
+                            />
+                        </div>
+                        <div class="grid gap-2">
+                            <label
+                                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900"
+                                    for="phone"
+                            >
+                                휴대폰 번호
+                            </label>
+                            <input
+                                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    id="phone"
+                                    placeholder="휴대폰 번호를 입력하세요."
+                                    required=""
+                                    type="tel"
+                            />
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input
+                                    type="checkbox"
+                                    id="ads"
+                                    class="peer hidden"
+                            />
+                            <label
+                                    for="ads"
+                                    class="h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 peer-checked:bg-primary peer-checked:text-primary-foreground cursor-pointer"
+                            ></label>
+                            <label
+                                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-900 cursor-pointer"
+                                    for="ads"
+                            >
+                                광고 수신 동의하기
+                            </label>
+                        </div>
+                        <button
+                                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-orange-600 text-white hover:bg-orange-500/90 h-10 px-4 py-2 w-full"
+                                type="submit"
+                        >
+                            계정 생성하기
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div th:replace="~{footer :: footer}"></div>
+</div>
 </body>
 </html>

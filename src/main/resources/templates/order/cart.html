@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="min-h-screen flex flex-col bg-orange-50">
+    <div th:replace="~{header :: header}"></div>
+    <main class="flex-1 flex">
+        <div th:replace="~{member/myPageAside :: aside}"></div>
+        <div class="flex-1 p-4 md:p-6 mx-8 mt-16">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold mb-4">장바구니</h2><br>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" th:each="row : ${list}">
+                    <div class="md:col-span-2 mr-12">
+                        <ul class="space-y-4">
+                            <li class="flex items-center justify-between gap-4">
+                                <div class="flex items-center gap-4">
+                                    <img
+                                            src="/placeholder.svg"
+                                            alt="Product Image"
+                                            width="100"
+                                            height="100"
+                                            class="w-20 h-20 object-cover rounded-md"
+                                            style="aspect-ratio: 100 / 100; object-fit: cover;"
+                                    />
+                                    <div>
+                                        <h3 class="text-lg font-semibold">상품 번호: <a th:text="${row.id}"></a></h3>
+                                        <h3 class="text-lg font-semibold">상품 명: 몰라요~~ </h3>
+                                        <p class="text-gray-500">가격: <span th:text="${row.order_price}"></span></p>
+
+                                        <div class="flex items-center gap-2">
+                                           <h3>수량: 왜 안되는데?</h3> <input type="number"
+                                                   class="appearance-none border rounded-md w-20 h-9 px-3 text-sm text-center text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary"
+                                                   value="${row.count}" min="1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3" th:onclick="|location.href='/order/orderUpdate/' + ${row.id}|">
+
+
+                                    <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="w-4 h-4"
+                                        >
+                                            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path>
+                                            <path d="m15 5 4 4"></path>
+                                        </svg>
+                                        <span>수정</span>
+                                    </button>
+                                    <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-red-400 text-destructive-foreground hover:bg-red-300/90 h-9 rounded-md px-3">
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="w-4 h-4"
+                                        >
+                                            <path d="M3 6h18"></path>
+                                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                        </svg>
+                                        <span>삭제</span>
+                                    </button>
+                                </div>
+                            </li>
+                            <hr>
+                            <li class="flex items-center justify-between gap-4">
+
+                                <div>
+                                    <div class="bg-gray-100 p-4 rounded-md">
+                                        <h3 class="text-lg font-semibold mb-2">주문 요약</h3>
+                                        <div class="flex justify-between mb-2">
+                                            <span>소계</span>
+                                            <span>$69.97</span>
+                                        </div>
+                                        <div class="flex justify-between mb-2">
+                                            <span>배송비</span>
+                                            <span>$5.99</span>
+                                        </div>
+                                        <div class="flex justify-between mb-4">
+                                            <span class="font-semibold">합계</span>
+                                            <span class="font-semibold">$75.96</span>
+                                        </div>
+                                        <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-orange-600 text-white hover:bg-orange-500/90 h-10 px-4 py-2 w-full">
+                                            결제하기
+                                        </button>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div th:replace="~{footer :: footer}"></div>
+</div>
+</body>
+</html>
