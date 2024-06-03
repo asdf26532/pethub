@@ -81,4 +81,36 @@ public class OrderService {
     public Object selectCart(int id) {
         return od.selectCart(id);
     }
+
+    public int deleteCart(int orderId) {
+        return od.deleteCart(orderId);
+    }
+
+    public int getOrder_status_id(int orderId) {
+        return od.getOrder_status_id(orderId);
+    }
+
+    public int getDeli_id(int osId) {
+        return od.getDeli_id(osId);
+    }
+
+    public int getDeli_st_id(int dId) {
+        return od.getDeli_st_id(dId);
+    }
+
+    public int deleteOrder(int orderId) {
+        return od.deleteOrder(orderId);
+    }
+
+    public int deleteOrderStatus(int osId) {
+        return od.deleteOrderStatus(osId);
+    }
+
+    public int deleteDelivery(int dId) {
+        return od.deleteDelivery(dId);
+    }
+
+    public int deleteDeliveryStatus(int dsId) {
+        return od.deleteDeliveryStatus(dsId);
+    }
 }

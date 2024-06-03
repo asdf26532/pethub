@@ -70,4 +70,28 @@ public interface OrderDAO {
 
     @Select("select * from Cart where id=#{id}")
     CartVO selectCart(int id);
+
+    @Delete("Delete From Cart where order_id=#{orderId}")
+    int deleteCart(int orderId);
+
+    @Select("select order_status from Order where id=#{orderId}")
+    int getOrder_status_id(int orderId);
+
+    @Select("select delivery_id from Order where order_status=#{osId}")
+    int getDeli_id(int osId);
+
+    @Select("select status_id from Delivery where id=#{dId}")
+    int getDeli_st_id(int dId);
+
+    @Delete("DELETE from Order whhere id=#{orderId}")
+    int deleteOrder(int orderId);
+
+    @Delete("DELETE from Order_Status where id=#{osId}")
+    int deleteOrderStatus(int osId);
+
+    @Delete("DELETE from Delivery where id=#{dId}")
+    int deleteDelivery(int dId);
+
+    @Delete("Delete from Delivery_Status where id=#{dsId}")
+    int deleteDeliveryStatus(int dsId);
 }

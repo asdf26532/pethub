@@ -115,5 +115,34 @@ public class OrderController {
         return mav;
     }
 
+    // 정보 삭제
+    @GetMapping("/delete/{order_id}")
+    public ModelAndView delete(@PathVariable("order_id") int order_id) {
+        ModelAndView mav = new ModelAndView();
+
+        int os_id=os.getOrder_status_id(order_id);
+        int d_id=os.getDeli_id(os_id);
+        int ds_id=os.getDeli_st_id(d_id);
+
+        os.deleteCart(order_id);
+        os.deleteOrder(order_id);
+        os.deleteOrderStatus(os_id);
+        os.deleteDelivery(d_id);
+
+        int row =os.deleteDeliveryStatus(ds_id);
+
+
+        String msg = "삭제 되었습니다. ";
+        if (row != 0)
+            msg = "삭제 실패하였습니다.";
+
+        mav.addObject("path", "/order/cart");
+        mav.addObject("msg", msg);
+
+        mav.setViewName("/order/Message");
+
+        return mav;
+    }
+
 }
 
