@@ -83,7 +83,7 @@ public interface OrderDAO {
     @Select("select status_id from Delivery where id=#{dId}")
     int getDeli_st_id(int dId);
 
-    @Delete("DELETE from Order whhere id=#{orderId}")
+    @Delete("DELETE from Order where id=#{orderId}")
     int deleteOrder(int orderId);
 
     @Delete("DELETE from Order_Status where id=#{osId}")
