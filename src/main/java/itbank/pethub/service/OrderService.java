@@ -1,18 +1,15 @@
 package itbank.pethub.service;
 
 import itbank.pethub.model.OrderDAO;
-import itbank.pethub.vo.CartVO;
-import itbank.pethub.vo.ItemVO;
-import itbank.pethub.vo.OrderVO;
-import org.springframework.beans.factory.annotation.Autowired;
+import itbank.pethub.vo.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class OrderService {
-    @Autowired
-    private OrderDAO od;
+    private final OrderDAO od;
 
     public List<CartVO> getCarts(int memberId) {
         return od.getCarts(memberId);
@@ -33,32 +30,15 @@ public class OrderService {
         return existingOrderId != null ? existingOrderId.intValue() : -1;
     }
 
-    public String makedelivery_status() {
-        return od.makedelivery_status();
-    }
 
-    public String makeOrder_status() {
-        return od.makeOrder_status();
-    }
-
-    public int getdelivery_status_id() {
-        return od.getdelivery_status_id();
-    }
-
-    public int makeDelivery(String add, int port, int deliveryId) {
-        return od.makedelivery(add, port, deliveryId);
-    }
 
     public int getdelivery_id() {
         return od.getdelivery_id();
     }
 
-    public int getOrder_status() {
-        return od.getOrder_status();
-    }
 
-    public OrderVO makeOrder(int memberId, int deliveryId, int orderStatus) {
-        return od.makeOrder(memberId, deliveryId, orderStatus);
+    public int makeOrder(OrderVO ov) {
+        return od.makeOrder(ov);
     }
 
     public ItemVO getItem(int productId) {
@@ -66,51 +46,63 @@ public class OrderService {
     }
 
     public int getorderid() {
-        return  od.getorderid();
+        return od.getorderid();
     }
 
-    public int makeCart(int orderid, int productId, int price, int quantity, int price1) {
-        return od.makecart(orderid, productId, price, quantity, price1);
+    public int makeCart(CartVO cv) {
+        return od.makecart(cv);
     }
 
     public int countUp(CartVO cartVO) {
         return od.countup(cartVO);
     }
 
-
-    public Object selectCart(int id) {
-        return od.selectCart(id);
-    }
-
     public int deleteCart(int orderId) {
         return od.deleteCart(orderId);
     }
 
-    public int getOrder_status_id(int orderId) {
-        return od.getOrder_status_id(orderId);
+
+    public int getDeli_id(int order_id) {
+        return od.getDeli_id(order_id);
     }
 
-    public int getDeli_id(int osId) {
-        return od.getDeli_id(osId);
-    }
-
-    public int getDeli_st_id(int dId) {
-        return od.getDeli_st_id(dId);
-    }
 
     public int deleteOrder(int orderId) {
         return od.deleteOrder(orderId);
     }
 
-    public int deleteOrderStatus(int osId) {
-        return od.deleteOrderStatus(osId);
-    }
 
     public int deleteDelivery(int dId) {
         return od.deleteDelivery(dId);
     }
 
-    public int deleteDeliveryStatus(int dsId) {
-        return od.deleteDeliveryStatus(dsId);
+
+    public int makeDelivery(DeliveryVO dsv) {
+        return od.makedelivery(dsv);
     }
+
+    public List<MODCVO> selectMODC(int memberId) {
+        return od.selectMODC(memberId);
+    }
+
+    public void updateCart(CartVO cart) {
+        od.updateCart(cart.getCount(), cart.getId());
+    }
+
+    public AddressVO getAddress(int memberId) {
+        return od.getAddress(memberId);
+    }
+
+    public int addressupdate(MODCVO user) {
+        return od.addressupdate(user);
+    }
+
+    public int updateorder(int orderId) {
+        return od.updateorder(orderId);
+    }
+
+    public List<MODCVO> selectAfterpay(int memberId) {
+        return od.selectAfterpay(memberId);
+    }
+
 }
