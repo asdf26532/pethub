@@ -3,105 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <title>상세 페이지</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #343a40;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2 {
-            text-align: center;
-            color: #007bff;
-        }
-        hr {
-            border: 0;
-            height: 1px;
-            background: #007bff;
-            margin-bottom: 20px;
-        }
-        .product-info {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .product-info div {
-            margin-bottom: 10px;
-        }
-        .product-info strong {
-            display: inline-block;
-            width: 100px;
-        }
-        #quantity {
-            width: 50px;
-            text-align: center;
-        }
-        button {
-            padding: 5px 10px;
-            font-size: 14px;
-            color: white;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 0 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        form {
-            text-align: center;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+<div class="min-h-screen flex flex-col bg-orange-50">
+    <div th:replace="~{header :: header}"></div>
 
-<h1>상세페이지</h1>
-<hr>
+    <div th:each="product : ${product}">
+        <div class="flex justify-center">
+            <div class="bg-white rounded-lg shadow-md mt-3 p-6 w-3/4">
+                <div class="flex justify-center">
+                    <div class="w-1/2 max-w-full max-h-64 mb-4">
+                        <img th:src="${product.pic}" alt="제품 이미지" class="mb-4 max-w-full max-h-64">
+                    </div>
 
+                    <div class="w-1/2 max-w-full max-h-64 mb-4">
+                        <p><strong>상품명:</strong> <span th:text="${product.name}"></span></p>
+                        <p><strong>가격:</strong> <span th:text="${product.price}"></span></p>
+                        물품 수량 : <input id="quantity" name="quantity" type="text" value="1">
+                        <span>
+                        <button type="button"
+                                onclick="document.getElementById('quantity').value++;">+</button>
+                        <button type="button"
+                                onclick="if(document.getElementById('quantity').value>1) document.getElementById('quantity').value--;">-</button>
+                        </span>
+                        <div>
+                            <form th:action="@{'/shop/DetailPage/' + ${product.id}}" method="POST">
+                                <input type="hidden" name="productId" th:value="${product.id}" />
+                                <input type="hidden" id="formQuantity" name="quantity" th:value="${1}" />
 
-<div th:each="product : ${product}">
-    <h2>Product Information</h2>
-    <div>
-        <strong>ID:</strong> <span th:text="${product.id}"></span>
-    </div>
-    <div>
-        <strong>상품명:</strong> <span th:text="${product.name}"></span>
-    </div>
-    <div>
-        <strong>가격:</strong> <span th:text="${product.price}"></span>
-    </div>
-    <div>
-        주문수량 : <input id="quantity" name="quantity" type="text" value="1">
-        <span>
-                <button type="button"
-                        onclick="document.getElementById('quantity').value++;">+</button>
-                <button type="button"
-                        onclick="if(document.getElementById('quantity').value>1) document.getElementById('quantity').value--;">-</button>
-            </span>
-    </div>
+                                <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-400 text-destructive-foreground hover:bg-blue-300/90 h-9 rounded-md px-3"
+                                        type="submit">
+                                    장바구니에 추가</button>
+                                <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-red-400 text-destructive-foreground hover:bg-red-300/90 h-9 rounded-md px-3"
+                                        type="button" onclick="submitForm(this.getAttribute('data-product-id'))" th:attr="data-product-id=${product.id}">
+                                    구매하기</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 제품 상세 이미지 or 텍스트 -->
+        <div class="flex justify-center">
+            <div class="mt-8 bg-white rounded-lg shadow-md p-6 w-3/4" th:if="${review != null && !review.isEmpty()}">
+                <h2 class="text-xl font-bold mb-4">제품 상세 이미지 or 텍스트</h2>
+                <span th:text="${product.detail}"></span>
+            </div>
+        </div>
+        <!-- 상품 리뷰 -->
+        <div class="flex justify-center mb-10">
+            <div class="mt-8 bg-white rounded-lg shadow-md p-6 w-3/4" th:if="${review != null && !review.isEmpty()}">
+                <h3 class="text-xl font-bold mb-4">리뷰</h3>
+                <div class="overflow-y-auto max-h-80">
+                    <div class="grid gap-4">
+                        <div class="bg-gray-100 p-4 rounded-md" th:each="review : ${review}">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="relative flex shrink-0 overflow-hidden rounded-full w-6 h-6">
+                                        <img class="aspect-square h-full w-full" alt="Author" src="/placeholder-user.jpg" />
+                                            첨부파일
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span th:text="${review.item} + ' - '">상품명</span>
+                                <span th:text="${review.nick} + '님 '">닉네임</span>
+                                <p class="text-sm" th:text="${review.rating} + '/5 점'">평점</p>
+                            </div>
 
-    <div>
-        <form th:action="@{'/order/DetailPage/' + ${product.id}}" method="POST">
-            <input type="hidden" name="productId" th:value="${product.id}" />
-            <input type="hidden" id="formQuantity" name="quantity" th:value="${1}" />
-            <button type="submit">구매</button>
-        </form>
+                            <p class="text-gray-600" th:text="${review.contents}">리뷰 내용</p>
+                            <!-- 로그인한 유저가 리뷰 작성자가 같은 삭제 버튼 활성화-->
+                            <!--<div th:if="${review.member_id} == ${session.userId}">-->
+                            <div th:if="${review.member_id} == 0" class="flex justify-end"> <!-- 일단 0으로-->
+                                <form th:action="@{/shop/deleteReview/{id}(id=${review.id})}" method="post">
+                                    <input type="hidden" name="item_id" th:value="${product.id}" />
+                                    <button type="submit" class="deleteReviewBtn inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-red-400 text-destructive-foreground hover:bg-red-300/90 h-9 rounded-md px-3">
+                                        <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="w-4 h-4"
+                                        >
+                                            <path d="M3 6h18"></path>
+                                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                        </svg>
+                                        <span>삭제</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<!--<div class="mt-8 bg-white rounded-lg shadow-md p-6">
+    <h3 class="text-xl font-bold mb-4">리뷰 작성</h3>
+    <div class="flex flex-col gap-4">
+        <form th:action="@{/shop/addReview}" method="post">
+                        <textarea
+                                class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                placeholder="리뷰를 작성하세요..."
+                                th:name="contents" th:value="${row?.contents}" th:required
+                        ></textarea>
+            <label for="rating">평점:</label>
+            <select name="rating" id="rating" required>
+                <option value="">별로 만들어줘</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <input type="hidden" name="item_id" th:value="${product.id}" />
+            <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-orange-600 text-white hover:bg-orange-500/90 h-10 px-4 py-2">
+                리뷰 작성
+            </button>
+        </form>
+    </div>
+</div>-->
 
+<div th:replace="~{footer :: footer}"></div>
+</div>
 <script>
+
     // 폼 제출 전에 숨겨진 입력 필드의 값을 업데이트합니다
     document.querySelector('form').addEventListener('submit', function() {
         var quantity = document.getElementById('quantity').value;
         document.getElementById('formQuantity').value = quantity;
     });
 
-
+    function submitForm(productId) {
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/shop/onebuy/' + productId;
+        var hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'quantity';
+        hiddenInput.value = document.getElementById('quantity').value;
+        form.appendChild(hiddenInput);
+        document.body.appendChild(form);
+        form.submit();
+    }
 
 </script>
 

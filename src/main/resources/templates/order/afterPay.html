@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="min-h-screen flex flex-col bg-orange-50">
+    <div th:replace="~{header :: header}"></div>
+    <main class="flex-1 flex">
+        <div th:replace="~{member/myPageAside :: aside}"></div>
+        <div class="flex-1 p-4 md:p-6 mx-8 mt-16">
+            <!-- Iterate over orders -->
+            <th:block th:each="order, iterStat : ${list}">
+                <!-- Check if it's the first order or different from the previous one -->
+                <th:block th:if="${iterStat.index == 0 or order.cdi != list[iterStat.index - 1].cdi}">
+
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-8" data-cdi="${order.cdi}">
+                        <h2 class="text-2xl font-semibold mb-4"><span th:text="${order.cdi}"></span>번 주문 - 주문현황</h2><br>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 주문 정보 출력 -->
+                            <div>
+                                <!-- 주문 정보 -->
+                                <h3 class="text-lg font-semibold mb-2">주문 정보</h3>
+                                <!-- 주문 정보 목록 -->
+                                <ul class="space-y-2">
+                                    <!-- 주문번호 -->
+                                    <li class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-gray-500">
+                                            <line x1="4" x2="20" y1="9" y2="9"></line>
+                                            <line x1="4" x2="20" y1="15" y2="15"></line>
+                                            <line x1="10" x2="8" y1="3" y2="21"></line>
+                                            <line x1="16" x2="14" y1="3" y2="21"></line>
+                                        </svg>
+                                        <span>주문번호: </span>
+                                        <span th:text="${order.order_id}"></span>
+                                    </li>
+                                    <!-- 받으시는 분 -->
+                                    <li class="flex items-start gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-gray-500 mt-1">
+                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                            <circle cx="12" cy="10" r="3"></circle>
+                                        </svg>
+                                        <div>
+                                            <p th:text="${order.member_name}">받으시는 분</p>
+                                            <p th:text="${order.delivery_address}"> 주소 </p>
+                                        </div>
+                                    </li>
+                                    <!-- 주문상태 -->
+                                    <li class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-gray-500">
+                                            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+                                            <path d="M15 18H9"></path>
+                                            <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+                                            <circle cx="17" cy="18" r="2"></circle>
+                                            <circle cx="7" cy="18" r="2"></circle>
+                                        </svg>
+                                        <span>주문상태: </span>
+                                        <span th:text="${order.order_status}"></span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-gray-500">
+                                            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path>
+                                            <path d="M15 18H9"></path>
+                                            <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path>
+                                            <circle cx="17" cy="18" r="2"></circle>
+                                            <circle cx="7" cy="18" r="2"></circle>
+                                        </svg>
+                                        <span>배송 상태: </span>
+                                        <span th:text="${order.delivery_status}"></span>
+                                    </li>
+
+
+
+
+
+                                </ul>
+                            </div>
+                            <!-- 주문 상품 목록 -->
+                            <div>
+                                <!-- 주문 정보 -->
+                                <h3 class="text-lg font-semibold mb-2">주문 상품 목록</h3>
+                                <!-- 주문 상품 목록 -->
+                                <ul class="space-y-4">
+                                    <th:block th:each="item : ${list}" th:if="${item.cdi == order.cdi}">
+                                        <li class="flex items-center justify-between gap-4">
+                                            <div class="flex items-center gap-4">
+                                                <img th:src="${product.pic}" alt="제품 이미지" class="aspect-[2/1]" width="400" height="200"/>
+                                                <div>
+                                                    <h4 class="text-lg font-semibold">상품 명: <span th:text="${item.item_name}"></span></h4>
+                                                    <span>수량: <span class="item-count" th:text="${item.count}" data-cdi="${order.cdi}"></span> 개</span>
+                                                    <p class="text-gray-500">합계 가격: <span class="item-price" th:text="${item.order_price * item.count}+' 원'" data-cdi="${order.cdi}"></span></p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </th:block>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <hr>
+                        <br>
+                        <!-- 상품 갯수와 취소 버튼 -->
+                        <li class="flex justify-between items-center">
+                            <!-- 줄 긋기 -->
+                            <hr class="my-4">
+
+                            <!-- 취소 버튼 -->
+                            <div>
+                                <a th:href="@{'/cartdelete/' + ${order.cdi}}" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+                                    취소 - 하고 있어용
+                                </a>
+
+                            </div>
+                        </li>
+                    </div>
+                </th:block>
+            </th:block>
+        </div>
+    </main>
+    <div th:replace="~{footer :: footer}"></div>
+</div>
+
+<script>
+    // 총 상품 갯수
+    document.addEventListener("DOMContentLoaded", function () {
+        var orders = document.querySelectorAll(".total-items");
+        orders.forEach(function (order) {
+            var cdi = order.getAttribute("data-cdi");
+            var totalItems = 0;
+            var itemElements = document.querySelectorAll(`.item-count[data-cdi='${cdi}']`);
+            itemElements.forEach(function (element) {
+                totalItems += parseInt(element.textContent);
+            });
+            order.textContent = totalItems + " 개";
+        });
+    });
+
+    // 총 주문 가격
+    document.addEventListener("DOMContentLoaded", function () {
+        var orders = document.querySelectorAll(".total-payment");
+        orders.forEach(function (order) {
+            var cdi = order.getAttribute("data-cdi");
+            var totalPrice = 0;
+            var priceElements = document.querySelectorAll(`.item-price[data-cdi='${cdi}']`);
+            priceElements.forEach(function (element) {
+                var priceText = element.textContent.replace(' 원', ''); // ' 원' 제거
+                var price = parseFloat(priceText);
+                totalPrice += price;
+            });
+            order.textContent = totalPrice.toLocaleString() + " 원";
+        });
+    });
+</script>
+</body>
+</html>
